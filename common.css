@@ -1,26 +1,37 @@
+:root {
+    --aep_light_red: #e02c1c;
+    --aep_dark_red: #b0241c;
+    --aep_grey: #6b6c6b;
+  }
+
 body {
+    align-content: center;
     align-items: center;
     align-self: center;
-    align-content: center;
-    margin: 0px auto;
+    font-family: Helvetica;
     text-align: center;
+    margin: 0px auto;
 }
 
 h1 {
-    color: blue;
-    font-family: 'Brush Script MT';
+    font-size: 500%;
+    color: var(--aep_light_red);
 }
 
 a {
     color: white;
     text-align: center;
-    background-color: b0241c;
+    background-color: var(--aep_dark_red);
     text-decoration: none;
     
     padding: 1vh;
 }
 
 #logo {
-    height: 4vh;
+    height: 100%;
     width: auto;
+}
+
+#title {
+    height: 10vh;
 }

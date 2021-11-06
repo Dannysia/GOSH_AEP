@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Map</title>
@@ -5,9 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="common.css" rel="stylesheet">
         <!--insert script here-->
+        <script>
+            let map;
+
+            function initMap() {
+              map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+              });
+            }
+
+            initMap()
+        </script>
     </head>
     <body>
-        <h1>AEP Vision</h1>
+        <div id="map"></div>
+        <h1 id="title"><img id='logo' src="american-electric-power-logo.png"> V.I.S.I.O.N.</h1>
         <div>testing...</div>
         <a href="login.html">Log In</a>
     </body>
