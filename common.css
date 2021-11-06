@@ -11,10 +11,16 @@ body {
     width: 100%;
 }
 
+#background {
+    width: 100%;
+    margin: 0px;
+}
+
 #headerBar {
     align-items: top;
     justify-content: center;
     display: flex;
+    margin: 0px;
 }
 
 #logo {
