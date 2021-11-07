@@ -2,13 +2,23 @@
     --aep_light_red: #e02c1c;
     --aep_dark_red: #c21229;
     --aep_grey: #6b6c6b;
-  }
+}
 
 body {
     background-color: #f1f1f1;
     font-family: Helvetica;
     margin: 0px auto;
     width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0px auto;
+}
+
+#aboutDevs {
+    text-align: center;
 }
 
 #background {
@@ -18,6 +28,10 @@ body {
 
 #description {
     width: 90%;
+    margin: 0px auto;
+}
+
+#devs {
     margin: 0px auto;
 }
 
