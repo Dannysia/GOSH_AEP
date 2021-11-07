@@ -35,6 +35,11 @@ table, th, td {
     margin: 0px auto;
 }
 
+#droneShot {
+    height: 80vh;
+    margin: 0px auto;
+}
+
 #footer {
     width: 90%;
     margin: 0px auto;
@@ -49,6 +54,11 @@ table, th, td {
     margin: 0px;
     background-color: var(--aep_dark_red);
     height: 55%;
+}
+
+#imgContainer {
+    margin: 0px auto;
+    width: min-content;
 }
 
 #logo {

@@ -2,13 +2,14 @@
 
 <html>
     <head>
-        <title>Sign Up</title>
+        <title>Drone Image</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="common.css" rel="stylesheet">
         <!--insert script here-->
+        <script src="report.js"></script>
     </head>
-    <body>
+    <body id="body" onload="loadImage()">
         <div id="headerBar">
             <a href="index.html"><img id='logo' src="AEP_VisionLogo.png" alt="AEP Vision"></a>
             <div class="dropdown">
@@ -31,5 +32,6 @@
                 </div>
             </div>
         </div>
+        <div id="imgContainer"></div>
     </body>
 </html>

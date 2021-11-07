@@ -38,13 +38,11 @@ function placePins(map) {
             // For each coordinate pair (lat, long): place a pin
             for (let i = 0; i < pins.length; i++) {
                 // Create a new pin,
-                pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]), {
-                    text: "P"
-                });
+                pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]));
 
                 // Assign an event handler to the pin
                 Microsoft.Maps.Events.addHandler(pins[i], 'click', function() {
-                    window.location.replace("imagePortal.html?pin=".concat(imageIDs[i]));
+                    window.location.replace("report.html?pin=" + imageIDs[i]);
                 });
             }
 
