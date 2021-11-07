@@ -44,7 +44,7 @@ function placePins(map) {
 
                 // Assign an event handler to the pin
                 Microsoft.Maps.Events.addHandler(pins[i], 'click', function() {
-                    window.location.replace("imagePortal.html?pin=" + imageIDs[i]);
+                    window.location.replace("imagePortal.html?pin=".concat(imageIDs[i]));
                 });
             }
 

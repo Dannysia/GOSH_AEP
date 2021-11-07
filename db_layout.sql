@@ -41,3 +41,8 @@ CREATE TABLE KMLCoords(
     Extrude INT,
     PRIMARY KEY(PlacemarkID, Type)
 );
+
+CREATE TABLE KMLCoordsPolesToImage(
+    PlacemarkID CHAR(9) REFERENCES KMLCoords(PlacemarkID),
+    ImageID INT REFERENCES PoleImages(ImageID)   
+)

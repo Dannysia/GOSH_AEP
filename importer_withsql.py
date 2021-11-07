@@ -143,4 +143,33 @@ def copyAndRenameImages(path):
         newPath = path + "new/" + pair["new"]
         shutil.copyfile(originalPath, newPath)
 
-copyAndRenameImages("HOhio/")
+#copyAndRenameImages("HOhio/")
+
+def findNearestPole(imageID):
+    connection = getConnection()
+    cursor = connection.cursor()
+    query = "SELECT Longitude, Latitude FROM PoleImages WHERE ImageID = %(imageID)s;"
+    cursor.execute(query, { "imageID" : imageID })
+    res = cursor.fetchall()[0]
+    targetLat = res[1]
+    targetLong = res[0]
+    query = "SELECT PlacemarkID, (SQRT(POWER(Latitude-%(targetLat)s,2))+POWER(Longitude-%(targetLong)s,2)) AS Distance FROM KMLCoords WHERE Type = 'P' ORDER BY Distance ASC LIMIT 1"
+    cursor.execute(query, {"targetLat" : targetLat, "targetLong" : targetLong})
+    return cursor.fetchall()[0][0]
+
+def findNearestPole():
+    iquery = "INSERT INTO KMLCoordsPolesToImage(PlacemarkID, ImageID) VALUES (%(PlacemarkID)s, %(ImageID)s);"
+    connection = getConnection()
+    cursor = connection.cursor()
+    query = "SELECT ImageID FROM PoleImages;"
+    cursor.execute(query)
+    images = cursor.fetchall()
+    for image in images:
+        PlacemarkID = findNearestPole(image)
+        try:
+            cursor.execute(iquery, {"PlacemarkID" : PlacemarkID, "ImageID" : image[0]})
+        except Exception as ex:
+            print(ex)
+    connection.commit()
+
+findNearestPole()
