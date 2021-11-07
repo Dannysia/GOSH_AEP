@@ -7,9 +7,6 @@ function loadMapScenario() {
         credentials: 'ArF9X74BvF7_gQ8upWm40PIJnSZDAvjM26t-E8e0hUQkFjzwjyiI5lMhpf9Ziw_F '
     });
 
-    //var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-    //map.entities.push(pushpin);
-
     placePins(map);
 }
 
@@ -26,14 +23,14 @@ function placePins(map) {
         // For each coordinate pair (lat, long): place a pin
         for (let i = 0; i < pins.length; i++) {
             // Create a new pin,
-            pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]));
+            pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]), {
+                text: "P"
+            });
 
             // Assign an event handler to the pin
             Microsoft.Maps.Events.addHandler(pins[i], 'click', function() {
                 window.location.replace("imagePortal.html?pin=" + i);
             });
-
-            //map.entities.push(pins[i]);
         }
 
         //Create a ClusterLayer and add it to the map.

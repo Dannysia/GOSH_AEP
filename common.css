@@ -16,6 +16,11 @@ body {
     margin: 0px;
 }
 
+#description {
+    width: 90%;
+    margin: 0px auto;
+}
+
 #footer {
     font-size: small;
 }
