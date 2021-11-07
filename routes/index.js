@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/image/:img', function(req, res, next){
+  res.sendfile('/home/danny/express/public/images/'+req.params["img"]+'.JPG');
+});
+
 module.exports = router;

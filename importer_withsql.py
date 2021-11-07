@@ -83,6 +83,7 @@ def getExifs(folder):
             continue
     return output
 
+
 connection = getConnection()
 cursor = connection.cursor()
 
@@ -99,12 +100,47 @@ cursor = connection.cursor()
 #    except Exception as ex:
 #        print(ex)
 
-query = "INSERT INTO PoleImages(OriginalName, DateTaken, Latitude, Longitude, Altitude) VALUES (%(OriginalName)s, %(DateTaken)s, %(Latitude)s, %(Longitude)s, %(Altitude)s);"
-exifs = getExifs("/home/danny/HOhio/")
-print(len(exifs))
-for data in exifs:
-    try:
-        cursor.execute(query,data)
-    except Exception as ex:
-        print(ex)
-connection.commit()
+#query = "INSERT INTO PoleImages(OriginalName, DateTaken, Latitude, Longitude, Altitude) VALUES (%(OriginalName)s, %(DateTaken)s, %(Latitude)s, %(Longitude)s, %(Altitude)s);"
+#exifs = getExifs("/home/danny/HOhio/")
+#print(len(exifs))
+#for data in exifs:
+#    try:
+#        cursor.execute(query,data)
+#    except Exception as ex:
+#        print(ex)
+
+#connection.commit()
+
+def getConnection2():
+    import mysql.connector
+    return mysql.connector.connect(user='danny', password='nnqSUt^oBoVSvC6', host='localhost', database='vision', auth_plugin='mysql_native_password')
+
+def getConnection2():
+    import mysql.connector
+    return mysql.connector.connect(user='danny', password='nnqSUt^oBoVSvC6', host='localhost', database='vision', auth_plugin='mysql_native_password')
+
+def getImagePairs():
+    connection = getConnection2()
+    cursor = connection.cursor()
+    query = "SELECT ImageID, OriginalName FROM PoleImages;"
+    cursor.execute(query)
+    res = cursor.fetchall()
+    output = []
+    for pair in res:
+        data = {
+            "original" : pair[1],
+            "new" : str(pair[0]) + ".JPG"
+        }
+        output.append(data)
+    return output
+
+def copyAndRenameImages(path):
+    import shutil
+    import os
+    pairs = getImagePairs()
+    for pair in pairs:
+        originalPath = pair["original"]
+        newPath = path + "new/" + pair["new"]
+        shutil.copyfile(originalPath, newPath)
+
+copyAndRenameImages("HOhio/")
