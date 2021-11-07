@@ -10,13 +10,18 @@ CREATE TABLE Users(
 CREATE TABLE Poles(
     PoleID INT AUTO_INCREMENT PRIMARY KEY,
     Latitude FLOAT,
-    Longitude FLOAT
+    Longitude FLOAT,
+    Altitude FLOAT
 );
 
 CREATE TABLE PoleImages(
-    PoleID INT REFERENCES Poles(PoleID),
     ImageID INT AUTO_INCREMENT PRIMARY KEY,
-    OriginalName VARCHAR(50)
+    OriginalName VARCHAR(100),
+    DateTaken DATETIME,
+    LikelyPole INT REFERENCES PoleID,
+    Latitude FLOAT,
+    Longitude FLOAT,
+    Altitude FLOAT
 );
 
 CREATE TABLE PoleReports(
@@ -24,4 +29,15 @@ CREATE TABLE PoleReports(
     ReporterID INT REFERENCES Users(UserID),
     Description VARCHAR(500),
     ReportDate DATETIME
+);
+
+CREATE TABLE KMLCoords(
+    PlacemarkID CHAR(9),
+    Type CHAR(1),
+    Latitude DOUBLE,
+    Longitude DOUBLE,
+    Altitude DOUBLE,
+    AltitudeMode VARCHAR(50),
+    Extrude INT,
+    PRIMARY KEY(PlacemarkID, Type)
 );
