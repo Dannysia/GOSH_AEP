@@ -18,13 +18,14 @@ function placePins(map) {
         // Receive pairs of coordinates (lat, long) from the SQL server
         lats = [39.9054895, 0, 0, 0.1];
         longs = [116.3976317, 0, 0.1, 0];
+        labels = ["P", "P", "T", "P"];
         pins = new Array(lats.length);
 
         // For each coordinate pair (lat, long): place a pin
         for (let i = 0; i < pins.length; i++) {
             // Create a new pin,
             pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]), {
-                text: "P"
+                text: labels[i]
             });
 
             // Assign an event handler to the pin
