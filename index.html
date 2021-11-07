@@ -7,20 +7,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="common.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!--insert script here-->
         <script src="common.js"></script>
     </head>
     <body>
-        <h1 id="title"><img id='logo' src="american-electric-power-logo.png"> V.I.S.I.O.N.</h1>
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+        <div id="headerBar">
+            <a href="index.html"><img id='logo' src="AEP_VisionLogo.png" alt="AEP Vision"></a>
+            <div class="dropdown">
+                <button class="dropbtn">User</button>
+                <div class="dropdown-content">
+                    <a href="login.html">Log In</a>
+                    <a href="signup.html">Sign Up</a>
+                </div>
             </div>
-        </div> 
-        <!--<a href="login.html">Log In<div>Hello</div></a
-        <a href="map.html">Map</a>-->
+            <div class="dropdown">
+                <button class="dropbtn">See it in Action</button>
+                <div class="dropdown-content">
+                    <a href="map.html">Map</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">About</button>
+                <div class="dropdown-content">
+                    <a href="aboutUs.html">About the Devs</a>
+                </div>
+            </div>
+        </div>
+        <img id="background" src="HomeImage.jpg" alt="AEP Contractors">
+        <div id="description">
+            <h1 id="title">What is V.I.S.I.O.N.?</h1>
+            <p>
+                V.I.S.I.O.N. is an initiative to provide accurate and timely reporting of infrastructure degradation.
+                As an acronym, V.I.S.I.O.N. stands for Verification of Infrastructure Stability and Insight into Operational Networks.
+                This system utilizes photos and GPS data from aerial surveying drones to evaluate damages to power distribution infrastructure.
+                Data can then be reviewed and labeled for further review and maintenance by human operators.
+                <br><br>
+                The insights provided by V.I.S.I.O.N. are intended to increase the efficiency of maintenance activities by
+                reducing the lead time between surveying of infrastructure and the application of corrective maintenance.
+                V.I.S.I.O.N. can also provide early warning of potential reliability issues and degradation,
+                for which quick preventative maintenance can increase short-term reliability.
+            </p>
+        </div>
+
+        <p id="footer">
+            This site is a submission for HackOHI/O 2021. It is not owned or endorsed by American Electric Power or any of its affiliates.
+        </p>
     </body>
 </html>
