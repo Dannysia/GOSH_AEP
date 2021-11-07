@@ -16,20 +16,32 @@ body {
     margin: 0px;
 }
 
+#footer {
+    font-size: small;
+}
+
 #headerBar {
     align-items: top;
     justify-content: center;
     display: flex;
     margin: 0px;
+    background-color: var(--aep_dark_red);
+    height: 55%;
 }
 
 #logo {
+    background-color: var(--aep_dark_red);
     height: 10vh;
     width: auto;
 }
 
+#myMap {
+    height: 100vh;
+    width: 100%;
+}
+
 #title {
-    align-self: center;
+    text-align: center;
 }
 
 /* Dropdown Button */
@@ -51,7 +63,7 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
-    
+    background-color: var(--aep_dark_red);
     width: 100%;
 }
   
