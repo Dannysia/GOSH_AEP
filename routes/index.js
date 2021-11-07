@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/image/:img', function(req, res, next){
-  res.sendfile('/home/danny/express/public/images/'+req.params["img"]+'.JPG');
+  res.sendFile('/home/danny/express/public/images/'+req.params["img"]+'.JPG');
 });
 
 module.exports = router;
