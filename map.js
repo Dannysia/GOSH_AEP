@@ -1,5 +1,3 @@
-
-
 function loadMapScenario() {
     
     //map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
@@ -10,32 +8,49 @@ function loadMapScenario() {
     placePins(map);
 }
 
+
+var imageIDs;
+
+
 function placePins(map) {
 
     //Load the Clustering module.
     Microsoft.Maps.loadModule("Microsoft.Maps.Clustering", function() {
 
+        var lats;
+        var longs;
         // Receive pairs of coordinates (lat, long) from the SQL server
-        lats = [39.9054895, 0, 0, 0.1];
-        longs = [116.3976317, 0, 0.1, 0];
-        labels = ["P", "P", "T", "P"];
-        pins = new Array(lats.length);
+        $.getJSON('http://174.138.39.166:3000/getLocations', function(data) {
+            var size = data.length;
+            lats = new Array(size);
+            longs = new Array(size);
+            imageIDs = new Array(size);
+            
 
-        // For each coordinate pair (lat, long): place a pin
-        for (let i = 0; i < pins.length; i++) {
-            // Create a new pin,
-            pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]), {
-                text: labels[i]
-            });
+            for (var i = 0; i < data.length; i++) {
+                imageIDs[i] = data[i]["ImageID"];
+                lats[i] = data[i]["Latitude"];
+                longs[i] = data[i]["Longitude"];
+            }
 
-            // Assign an event handler to the pin
-            Microsoft.Maps.Events.addHandler(pins[i], 'click', function() {
-                window.location.replace("imagePortal.html?pin=" + i);
-            });
-        }
+            var pins = new Array(lats.length);
 
-        //Create a ClusterLayer and add it to the map.
-        var clusterLayer = new Microsoft.Maps.ClusterLayer(pins);
-        map.layers.insert(clusterLayer);
+            // For each coordinate pair (lat, long): place a pin
+            for (let i = 0; i < pins.length; i++) {
+                // Create a new pin,
+                pins[i] = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(lats[i], longs[i]), {
+                    text: "P"
+                });
+
+                // Assign an event handler to the pin
+                Microsoft.Maps.Events.addHandler(pins[i], 'click', function() {
+                    window.location.replace("imagePortal.html?pin=" + imageIDs[i]);
+                });
+            }
+
+            //Create a ClusterLayer and add it to the map.
+            var clusterLayer = new Microsoft.Maps.ClusterLayer(pins);
+            map.layers.insert(clusterLayer);
+        });
     });
 }
